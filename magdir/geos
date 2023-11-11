@@ -1,6 +1,6 @@
-#	$OpenBSD: geos,v 1.2 2008/05/14 20:45:35 chl Exp $
 
 #------------------------------------------------------------------------------
+# $File: geos,v 1.4 2009/09/19 16:28:09 christos Exp $
 # GEOS files (Vidar Madsen, vidar@gimp.org)
 # semi-commonly used in embedded and handheld systems.
 0	belong	0xc745c153	GEOS

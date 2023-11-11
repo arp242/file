@@ -1,6 +1,6 @@
-#	$OpenBSD: btsnoop,v 1.2 2008/05/14 20:45:35 chl Exp $
 
 #------------------------------------------------------------------------------
+# $File: btsnoop,v 1.5 2009/09/19 16:28:08 christos Exp $
 # BTSnoop:  file(1) magic for BTSnoop files
 #
 # From <marcel@holtmann.org>

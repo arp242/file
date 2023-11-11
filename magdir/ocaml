@@ -1,6 +1,6 @@
-#	$OpenBSD: ocaml,v 1.2 2015/10/05 22:48:26 nicm Exp $
 
 #------------------------------------------------------------------------------
+# $File: ocaml,v 1.5 2010/09/20 18:55:20 rrt Exp $
 # ocaml: file(1) magic for Objective Caml files.
 0	string	Caml1999	OCaml
 >8	string	X		exec file

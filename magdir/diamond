@@ -1,6 +1,6 @@
-#	$OpenBSD: diamond,v 1.2 2004/06/03 03:14:19 tedu Exp $
 
 #------------------------------------------------------------------------------
+# $File: diamond,v 1.7 2009/09/19 16:28:08 christos Exp $
 # diamond:  file(1) magic for Diamond system
 #
 # ... diamond is a multi-media mail and electronic conferencing system....

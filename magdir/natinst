@@ -1,6 +1,6 @@
-#	$OpenBSD: natinst,v 1.2 2015/10/05 22:48:26 nicm Exp $
 
 #-----------------------------------------------------------------------------
+# $File: natinst,v 1.6 2014/06/03 19:17:27 christos Exp $
 # natinst:  file(1) magic for National Instruments Code Files
 
 #

@@ -1,6 +1,6 @@
-#	$OpenBSD: inform,v 1.4 2015/10/05 22:48:26 nicm Exp $
 
 #------------------------------------------------------------------------------
+# $File: inform,v 1.5 2009/09/19 16:28:09 christos Exp $
 # inform:  file(1) magic for Inform interactive fiction language
 
 # URL:  http://www.inform-fiction.org/

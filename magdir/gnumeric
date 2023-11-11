@@ -1,6 +1,6 @@
-#	$OpenBSD: gnumeric,v 1.2 2009/04/26 14:17:45 chl Exp $
 
 #------------------------------------------------------------------------------
+# $File: gnumeric,v 1.4 2009/09/19 16:28:09 christos Exp $
 # gnumeric:  file(1) magic for Gnumeric spreadsheet
 # This entry is only semi-helpful, as Gnumeric compresses its files, so
 # they will ordinarily reported as "compressed", but at least -z helps

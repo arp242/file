@@ -1,6 +1,6 @@
-#	$OpenBSD: smalltalk,v 1.2 2015/10/05 22:48:26 nicm Exp $
 
 #-----------------------------------------------
+# $File: smalltalk,v 1.5 2009/09/19 16:28:12 christos Exp $
 # GNU Smalltalk image, starting at version 1.6.2
 # From: catull_us@yahoo.com
 #
@@ -21,4 +21,5 @@
 #>>12	belong	x		, data: %ld
 #>>16	belong	x		, table: %ld
 #>>20	belong	x		, memory: %ld
+
 

@@ -1,6 +1,6 @@
-#	$OpenBSD: virtutech,v 1.2 2008/05/14 20:45:35 chl Exp $
 
 #------------------------------------------------------------------------------
+# $File: virtutech,v 1.4 2009/09/19 16:28:13 christos Exp $
 # Virtutech Compressed Random Access File Format
 #
 # From <gustav@virtutech.com>

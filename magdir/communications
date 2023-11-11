@@ -1,6 +1,6 @@
-#	$OpenBSD: communications,v 1.2 2008/05/14 20:45:35 chl Exp $
 
 #----------------------------------------------------------------------------
+# $File: communications,v 1.5 2009/09/19 16:28:08 christos Exp $
 # communication
 
 # TTCN is the Tree and Tabular Combined Notation described in ISO 9646-3.

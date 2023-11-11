@@ -1,6 +1,6 @@
-#	$OpenBSD: dact,v 1.1 2004/06/03 03:14:19 tedu Exp $
 
 #------------------------------------------------------------------------------
+# $File: dact,v 1.4 2009/09/19 16:28:08 christos Exp $
 # dact:  file(1) magic for DACT compressed files
 #
 0	long		0x444354C3	DACT compressed data

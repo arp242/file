@@ -1,6 +1,6 @@
-#	$OpenBSD: adi,v 1.1 2004/06/03 03:14:19 tedu Exp $
 
 #------------------------------------------------------------------------------
+# $File: adi,v 1.4 2009/09/19 16:28:07 christos Exp $
 # adi: file(1) magic for ADi's objects
 # From Gregory McGarry <g.mcgarry@ieee.org>
 #
