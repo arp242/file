@@ -9,7 +9,7 @@
 #include "magic.h"
 
 __attribute__((weak)) void
-__explicit_bzero_hook(void *buf, size_t len)
+__explicit_bzero_hook(__attribute__((unused)) void *buf, __attribute__((unused)) size_t len)
 {
 }
 

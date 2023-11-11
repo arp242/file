@@ -172,8 +172,10 @@ main(int argc, char **argv)
 	} else if (argc == 0)
 		usage();
 
+#ifdef HAVE_PLEDGE
 	if (pledge("stdio rpath getpw recvfd sendfd id proc", NULL) == -1)
 		err(1, "pledge");
+#endif
 
 	magicfp = NULL;
 #ifdef HAVE_ISSETUGID
@@ -215,8 +217,10 @@ main(int argc, char **argv)
 	}
 	close(pair[1]);
 
+#ifdef HAVE_PLEDGE
 	if (pledge("stdio rpath sendfd", NULL) == -1)
 		err(1, "pledge");
+#endif
 
 	fclose(magicfp);
 	magicfp = NULL;
@@ -379,8 +383,10 @@ child(int fd, pid_t parent, int argc, char **argv)
 	int			 i, idx;
 	size_t			 len, width = 0;
 
+#ifdef HAVE_PLEDGE
 	if (pledge("stdio getpw recvfd id", NULL) == -1)
 		err(1, "pledge");
+#endif
 
 	if (geteuid() == 0) {
 		pw = getpwnam(FILE_USER);
@@ -394,8 +400,10 @@ child(int fd, pid_t parent, int argc, char **argv)
 			err(1, "setresuid");
 	}
 
+#ifdef HAVE_PLEDGE
 	if (pledge("stdio recvfd", NULL) == -1)
 		err(1, "pledge");
+#endif
 
 #ifdef HAVE_PRCTL
 	sandbox_seccomp();

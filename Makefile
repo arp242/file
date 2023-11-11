@@ -1,47 +1,43 @@
-# $OpenBSD: Makefile,v 1.18 2018/01/15 19:45:51 brynet Exp $
+PROG = file
+SRCS = file.c magic-dump.c magic-load.c magic-test.c magic-common.c text.c xmalloc.c
+OBJS = ${SRCS:.c=.o}
 
-PROG=   file
-SRCS=   file.c magic-dump.c magic-load.c magic-test.c magic-common.c \
-	text.c xmalloc.c
-MAN=	file.1 magic.5
+CFLAGS  = -Icompat -O2 -std=c99 -D_GNU_SOURCE -Wall -Wextra \
+	-fstack-protector-all -fPIE `./have-pledge.sh`
+LDFLAGS = compat/libcompat.a
 
-LDADD=	-lutil
-DPADD=	${LIBUTIL}
+MAGIC     = /etc/magic
 
-CDIAGFLAGS+= -Wno-long-long -Wall -W -Wnested-externs -Wformat=2
-CDIAGFLAGS+= -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations
-CDIAGFLAGS+= -Wwrite-strings -Wshadow -Wpointer-arith -Wsign-compare
-CDIAGFLAGS+= -Wundef -Wbad-function-cast -Winline -Wcast-align
+.PHONY: all clean install
 
-MAGIC=		/etc/magic
-MAGICOWN=	root
-MAGICGRP=	bin
-MAGICMODE=	444
+all: ${PROG} magic
 
-#CLEANFILES+=	magic post-magic
+compat/libcompat.a:
+	@${MAKE} -C compat
 
-MAG1=		$(.CURDIR)/magdir/Header \
-		$(.CURDIR)/magdir/Localstuff \
-		$(.CURDIR)/magdir/OpenBSD
-MAGFILES=	$(.CURDIR)/magdir/[0-9a-z]*
+.c.o:
+	${CC} ${CFLAGS} -c $<
 
-#post-magic: $(MAGFILES)
-#	for i in ${.ALLSRC:N*.orig}; do \
-#		echo $$i; \
-#	done|sort|xargs -n 1024 cat >$(.TARGET)
+magic: ./magdir/*
+	for i in ./magdir/*; do echo $$i; done | sort | xargs -n 1024 grep -Ehv '(^#|^$$)' >magic
 
-#magic: $(MAG1) post-magic
-#	cat ${MAG1} post-magic >$(.TARGET)
+${PROG}: compat/libcompat.a ${OBJS}
+	${CC} ${CFLAGS} -o $@ ${OBJS} ${LDFLAGS}
 
-#afterinstall:
-#	${INSTALL} ${INSTALL_COPY} -o $(MAGICOWN) -g $(MAGICGRP) \
-#		-m $(MAGICMODE) magic $(DESTDIR)$(MAGIC)
+clean:
+	rm -f ${PROG} ${OBJS} magic
+	@${MAKE} -C compat clean
 
-all:
-	@echo "You didn't run ./configure or ./autogen.sh"
+install: all
+	@mkdir -p ${DESTDIR}/bin
+	install -m755 ${PROG} ${DESTDIR}/bin/${PROG}
+	@strip ${DESTDIR}/bin/${PROG}
+
+	@mkdir -p ${DESTDIR}/usr/share/man/man1
+	install -m644 ${PROG}.1 ${DESTDIR}/usr/share/man/man1/${PROG}.1
+	install -m644 magic.5 ${DESTDIR}/usr/share/man/man5/magic.5
+	install -m444 magic ${DESTDIR}${MAGIC}
 
 #syscall-linux.txt:
 #	echo "#include <sys/syscall.h>" | cpp -dM | grep '^#define __NR_' | \
-#	LC_ALL=C sed -r -n -e 's/^\#define[ \t]+__NR_([a-z0-9_]+)[ \t]+([0-9]+)(.*)/ [\2] = "\1",/p' >> $@ ;\
-
-#.include <bsd.prog.mk>
+#		LC_ALL=C sed -r -n -e 's/^\#define[ \t]+__NR_([a-z0-9_]+)[ \t]+([0-9]+)(.*)/ [\2] = "\1",/p' >> $@ ;\
