@@ -1361,7 +1361,7 @@ magic_test_line(struct magic_line *ml, struct magic_state *ms)
 	if (ml->mimetype != NULL)
 		ms->mimetype = ml->mimetype;
 
-	magic_warn(ml, "test %s/%c matched at offset %lld (now %zu): "
+	magic_warn(ml, "test %s/%c matched at offset %ld (now %zu): "
 	    "'%s'", ml->type_string, ml->test_operator, offset,
 	    ms->offset, ml->result == NULL ? "" : ml->result);
 
@@ -1374,7 +1374,7 @@ magic_test_line(struct magic_line *ml, struct magic_state *ms)
 			magic_warn(ml, "no name found for use %s", ml->name);
 			return (0);
 		}
-		magic_warn(ml, "use %s at offset %lld", ml->name, offset);
+		magic_warn(ml, "use %s at offset %ld", ml->name, offset);
 		magic_test_children(named, ms, offset, *ml->name == '^');
 	}
 

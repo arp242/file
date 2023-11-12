@@ -2,7 +2,7 @@ PROG = file
 SRCS = file.c magic-dump.c magic-load.c magic-test.c magic-common.c text.c xmalloc.c
 OBJS = ${SRCS:.c=.o}
 
-CFLAGS  = -Icompat -O2 -std=c99 -D_GNU_SOURCE -Wall -Wextra \
+CFLAGS  = -Icompat -O2 -std=c99 -D_GNU_SOURCE -Wall -Wextra -Wno-unused-parameter \
 	-fstack-protector-all -fPIE `./have-pledge.sh`
 LDFLAGS = compat/libcompat.a
 

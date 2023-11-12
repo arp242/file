@@ -691,7 +691,7 @@ magic_parse_type(struct magic_line *ml, char **line)
 	cp = &s[strcspn(s, "+-&/%*")];
 	if (*cp != '\0') {
 		ml->type_operator = *cp;
-		endptr = magic_strtoull(cp + 1, &ml->type_operand);
+		endptr = magic_strtoull(cp + 1, (uint64_t *)&ml->type_operand);
 		if (endptr == NULL || *endptr != '\0') {
 			magic_warn(ml, "can't parse operand: %s", cp + 1);
 			goto fail;
